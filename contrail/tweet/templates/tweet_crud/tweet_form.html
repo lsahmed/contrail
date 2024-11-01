@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% comment %}
+{% block content %} 
+<div class="ms-5">
+
+
+</div>
+{% endblock %} {% endcomment %}
+
+{% block content%}
+
+<div class="container mt-4">
+    <h1 class="text-center  mt-5">{% if form.instance.pk %} Edit Tweet  {% else %} Create new Tweet {% endif %}</h1>
+    <form class="form " method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-warning" type="submit">{% if form.instance.pk %} Submit Edit {% else %} Create {% endif %}</button>
+    </form>
+    <a href="{% url "tweet_list" %}">Back to page</a>
+</div>
+
+
+{% endblock %}
